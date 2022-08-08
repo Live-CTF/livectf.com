@@ -30,13 +30,13 @@ video {
 
 <div id="space">
   <h2>Live from DEF CON CTF 2022 Finals</h2>
-  <h2><div id="clockdiv">0 days 0 hours 0 minutes 0 seconds</div></h2>
+  <h2>Broadcast begins in <span id="clockdiv">0d 0hr 0min 0s</span><br />(2022-08-12 2030 UTC)</h2>
   <h2>In partnership with:<h2>
   <img src="./ni-white.png" width="15%" />
 </div>
 
 <script>
-  const deadline = 'August 12 2022 14:00:00 GMT-0700';
+  const deadline = 'August 12 2022 13:30:00 GMT-0700';
   function getTimeRemaining(endtime){
       const total = Date.parse(endtime) - Date.parse(new Date());
       const seconds = Math.floor( (total/1000) % 60 );
@@ -56,7 +56,7 @@ video {
   const clock = document.getElementById(id);
   const timeinterval = setInterval(() => {
     const t = getTimeRemaining(endtime);
-    clock.innerHTML = t.days + ' days ' + t.hours + ' hours ' + t.minutes + ' minutes ' + t.seconds + ' seconds ';
+    clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's ';
     if (t.total <= 0) {
       clearInterval(timeinterval);
     }
