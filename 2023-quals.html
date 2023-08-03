@@ -46,12 +46,11 @@ a.broadcast, a, a.broadcast:visited {
 
 #previous ul li {
   list-style-type: none;
-  padding-bottom: 5px;
 }
 
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
 <video poster="./logo.png" autoplay playsinline muted loop>
   <source src="./title.mp4" type="video/mp4">
@@ -60,21 +59,22 @@ a.broadcast, a, a.broadcast:visited {
 <div id="previous">
   <p>Past events:</p>
   <ul>
-    <li><a href="2023-quals.html">2023 DEF CON Quals</a></li>
     <li><a href="2022.html">2022 DEF CON Finals</a></li>
   </ul>
 </div>
 
 <div id="space">
-  <h2>We'll be back at DEF CON 31 Finals</h2>
-  <div style="font-size: 20pt;" id="clockdiv">soon</div>
+  <h2>Live at <a href="https://quals.2023.nautilus.institute/">DEF CON 31 Quals</a></h2>
+  <h2>Stream Links:</h2>
+      <div><a href="https://www.youtube.com/watch?v=UNyZkkGPGC8">Kickoff</a>, <a href="https://www.youtube.com/watch?v=Tuyjgm2hx58">Chal 1</a>, <a href="https://www.youtube.com/watch?v=PNLWUCGYHrs">Chal 2</a>, <a href="https://www.youtube.com/watch?v=1Ig22yERUvI">Chal 3</a>, <a href="https://www.youtube.com/watch?v=4rI1XhMd6YQ">Chal 4</a> (Redux), <a href="https://www.youtube.com/watch?v=MKnCIDP5iWA">Chal 5</a>, <a href="https://www.youtube.com/watch?v=-XSoLIvn0S8">Final</a></div>
+  <div style="font-size: 20pt;" id="clockdiv" hidden> </div>
 
   <h2>In partnership with:<h2>
   <img src="./ni-white.png" width="15%" />
 </div>
 
 <script>
-  const deadline = 'August 11 2023 17:00:00 GMT-0000';
+  const deadline = 'May 27 2023 00:00:00 GMT-0000';
   function getTimeRemaining(endtime){
       const total = Date.parse(endtime) - Date.parse(new Date());
       const seconds = Math.floor( (total/1000) % 60 );
@@ -90,18 +90,18 @@ a.broadcast, a, a.broadcast:visited {
           seconds
         };
     }
-  function initializeClock(id, endtime) {
-    const clock = document.getElementById(id);
-    const timeinterval = setInterval(() => {
-      const t = getTimeRemaining(endtime);
-      clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's ';
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
-    }, 1000);
-  }
+ function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const timeinterval = setInterval(() => {
+    const t = getTimeRemaining(endtime);
+    clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's ';
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  },1000);
+}
   initializeClock('clockdiv', deadline);
 </script>
-</body>
+  </body>
 </html>
 
