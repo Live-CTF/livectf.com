@@ -6,12 +6,16 @@
 body {
   font-family: sans-serif;
   color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
+
 video {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
@@ -31,7 +35,7 @@ a.broadcast, a, a.broadcast:visited {
 }
 
 #previous {
-  position: fixed;
+  position: absolute;
   left: 50%;
   bottom: 0;
   padding: 10px;
@@ -49,6 +53,62 @@ a.broadcast, a, a.broadcast:visited {
   padding-bottom: 5px;
 }
 
+#bracket {
+  position: absolute;
+  bottom: -100%;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#bracket-button {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  background: #d81bc8;
+  box-shadow: 0 0 15px 5px #f638e6;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20pt;
+  text-align: center;
+  padding: 10px;
+  animation: pulse 3s infinite;
+  cursor: pointer;
+}
+
+.chevron::before {
+	border-style: solid;
+	border-width: 0.15em 0.15em 0 0;
+	content: '';
+	display: inline-block;
+	height: 20px;
+	position: relative;
+	width: 20px;
+  top: 0;
+	transform: rotate(135deg);
+}
+
+.chevron {
+  margin-top: 5px;
+  height: 20px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px 2px #f638e6;
+  }
+
+  50% {
+    box-shadow: 0 0 15px 5px #f638e6;
+  }
+
+  100% {
+    box-shadow: 0 0 5px 2px #f638e6;
+  }
+}
+
+
 </style>
 </head>
 <body>
@@ -56,6 +116,15 @@ a.broadcast, a, a.broadcast:visited {
 <video poster="./logo.png" autoplay playsinline muted loop>
   <source src="./title.mp4" type="video/mp4">
 </video>
+
+
+<div id="space">
+  <div style="font-size: 20pt;" id="clockdiv">soon</div>
+
+  <h2>In partnership with:<h2>
+  <img src="./ni-white.png" width="15%" />
+</div>
+
 
 <div id="previous">
   <p>Past events:</p>
@@ -65,16 +134,14 @@ a.broadcast, a, a.broadcast:visited {
   </ul>
 </div>
 
-<div id="space">
-  <h2>We'll be back at DEF CON 31 Finals</h2>
-  <div style="font-size: 20pt;" id="clockdiv">soon</div>
+<iframe id="bracket" src="https://livectf.challonge.com/livectf_defcon2023/module?theme=8219" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
 
-  <h2>In partnership with:<h2>
-  <img src="./ni-white.png" width="15%" />
+<div id="bracket-button">
+  <div class="chevron"></div>
 </div>
 
 <script>
-  const deadline = 'August 11 2023 17:00:00 GMT-0000';
+  const deadline = 'August 11 2023 12:00:00 UTC-0700';
   function getTimeRemaining(endtime){
       const total = Date.parse(endtime) - Date.parse(new Date());
       const seconds = Math.floor( (total/1000) % 60 );
@@ -101,6 +168,13 @@ a.broadcast, a, a.broadcast:visited {
     }, 1000);
   }
   initializeClock('clockdiv', deadline);
+
+  document.getElementById("bracket-button").onclick = function() {
+    document.getElementById('bracket').scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+
 </script>
 </body>
 </html>
