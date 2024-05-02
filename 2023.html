@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>LiveCTF</title>
+<style>
+body {
+  font-family: sans-serif;
+  color: #fff;
+}
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.broadcast {
+  color: #6699ff;
+}
+
+#space {
+  text-align: center;
+  margin-top: 50vh;
+}
+
+a.broadcast, a, a.broadcast:visited {
+  color: #9932CC;
+}
+
+#previous {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  padding: 10px;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(223,60,220);
+}
+
+#previous a {
+  color: white;
+}
+
+#previous ul li {
+  list-style-type: none;
+}
+
+</style>
+  </head>
+  <body>
+
+<video poster="./logo.png" autoplay playsinline muted loop>
+  <source src="./title.mp4" type="video/mp4">
+</video>
+
+<div id="previous">
+  <p>Past events:</p>
+  <ul>
+    <li><a href="2023-quals.html">2023 DEF CON Quals</a></li>
+    <li><a href="2022.html">2022 DEF CON Finals</a></li>
+  </ul>
+</div>
+
+<div id="space">
+  <h2>Stream Links:</h2>
+  <div id="links">
+    <p>
+      <a href="https://youtube.com/live/VxDnpShqloA">Day 3 Casted Stream</a>
+    </p>
+    <p>
+      <a href="https://www.youtube.com/watch?v=UtKuM2SWnNE">Day 2 Casted Stream</a>
+      <a href="https://multistream.me/yt:dthkJvZcoeM/yt:fzxch3C1c0w">Day 2 Uncasted Screens</a>
+    </p>
+    <p>
+      <a href="https://www.youtube.com/watch?v=-dAVKkMoagM">Day 1 Casted Stream</a>
+      <a href="https://multistream.me/yt:MbuUtpLc6mk/yt:Md_TeXWGl_8">Day 1 Uncasted Screens</a>
+    </p>
+  </div>
+  <div style="font-size: 20pt;" id="clockdiv" hidden> </div>
+
+  <h2>In partnership with:<h2>
+  <img src="./ni-white.png" width="15%" />
+</div>
+
+<script>
+  const deadline = 'May 27 2023 00:00:00 GMT-0000';
+  function getTimeRemaining(endtime){
+      const total = Date.parse(endtime) - Date.parse(new Date());
+      const seconds = Math.floor( (total/1000) % 60 );
+      const minutes = Math.floor( (total/1000/60) % 60 );
+      const hours = Math.floor( (total/(1000*60*60)) % 24 );
+      const days = Math.floor( total/(1000*60*60*24) );
+
+      return {
+          total,
+          days,
+          hours,
+          minutes,
+          seconds
+        };
+    }
+ function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const timeinterval = setInterval(() => {
+    const t = getTimeRemaining(endtime);
+    clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's ';
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  },1000);
+}
+  initializeClock('clockdiv', deadline);
+</script>
+  </body>
+</html>
+
