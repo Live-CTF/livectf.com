@@ -1,182 +1,185 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>LiveCTF</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
 
-<head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <title>LiveCTF</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
 
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+      .broadcast {
+        color: #6699ff;
+      }
 
-    .broadcast {
-      color: #6699ff;
-    }
+      #content {
+        display: flex;
+        padding: 0 15%;
+      }
 
-    #content {
-      display: flex;
-      padding: 0 15%;
-    }
+      #partner {
+        padding: 20px;
+        width: 20%;
+      }
 
-    #partner {
-      padding: 20px;
-      width: 20%;
-    }
+      #links {
+        padding: 20px;
+        width: 60%;
+      }
 
-    #links {
-      padding: 20px;
-      width: 60%;
-    }
+      #space {
+        text-align: center;
+        margin-top: 50vh;
+      }
 
-    #space {
-      text-align: center;
-      margin-top: 50vh;
-    }
+      a.broadcast,
+      a,
+      a.broadcast:visited {
+        color: #9932cc;
+      }
 
-    a.broadcast,
-    a,
-    a.broadcast:visited {
-      color: #9932CC;
-    }
-
-    #previous {
-      /*position: absolute;
+      #previous {
+        /*position: absolute;
       left: 50%;
       bottom: 0;*/
-      padding: 10px;
-      width: 20%;
-      /*transform: translate(-50%, -50%);*/
-      border: 1px solid rgb(223, 60, 220);
-    }
-
-    #previous a {
-      color: white;
-    }
-
-    #previous ul li {
-      list-style-type: none;
-      padding-bottom: 5px;
-    }
-
-    #bracket {
-      position: absolute;
-      bottom: -100%;
-      left: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    #bracket-button {
-      position: absolute;
-      bottom: 50px;
-      right: 50px;
-      background: #d81bc8;
-      box-shadow: 0 0 15px 5px #f638e6;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 20pt;
-      text-align: center;
-      padding: 10px;
-      animation: pulse 3s infinite;
-      cursor: pointer;
-    }
-
-    .chevron::before {
-      border-style: solid;
-      border-width: 0.15em 0.15em 0 0;
-      content: '';
-      display: inline-block;
-      height: 20px;
-      position: relative;
-      width: 20px;
-      top: 0;
-      transform: rotate(135deg);
-    }
-
-    .chevron {
-      margin-top: 5px;
-      height: 20px;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 5px 2px #f638e6;
+        padding: 10px;
+        width: 20%;
+        /*transform: translate(-50%, -50%);*/
+        border: 1px solid rgb(223, 60, 220);
       }
 
-      50% {
+      #previous a {
+        color: white;
+      }
+
+      #previous ul li {
+        list-style-type: none;
+        padding-bottom: 5px;
+      }
+
+      #bracket {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #bracket-button {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        background: #d81bc8;
         box-shadow: 0 0 15px 5px #f638e6;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 20pt;
+        text-align: center;
+        padding: 10px;
+        animation: pulse 3s infinite;
+        cursor: pointer;
       }
 
-      100% {
-        box-shadow: 0 0 5px 2px #f638e6;
+      .chevron::before {
+        border-style: solid;
+        border-width: 0.15em 0.15em 0 0;
+        content: "";
+        display: inline-block;
+        height: 20px;
+        position: relative;
+        width: 20px;
+        top: 0;
+        transform: rotate(135deg);
       }
-    }
-  </style>
-</head>
 
-<body>
+      .chevron {
+        margin-top: 5px;
+        height: 20px;
+      }
 
-  <video poster="./logo.png" autoplay playsinline muted loop>
-    <source src="./title.mp4" type="video/mp4">
-  </video>
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 5px 2px #f638e6;
+        }
 
+        50% {
+          box-shadow: 0 0 15px 5px #f638e6;
+        }
 
-  <div id="space">
-    <div style="font-size: 20pt;">
-      <!--We'll be back in
+        100% {
+          box-shadow: 0 0 5px 2px #f638e6;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <video poster="./logo.png" autoplay playsinline muted loop>
+      <source src="./title.mp4" type="video/mp4" />
+    </video>
+
+    <div id="space">
+      <div style="font-size: 20pt">
+        <!--We'll be back in
       <div id="clockdiv">soon</div>-->
-      Watch the LiveCTF stream!
-    </div>
-
-    <div id="content">
-
-      <div id="partner">
-        <h2>In partnership with:<h2>
-            <img src="./ni-white.png" width="100%" />
+        Watch the LiveCTF stream!
       </div>
 
-      <div id="links">
-          <h2>Join us during the DEF CON 33 CTF <a href="https://quals.2025.nautilus.institute/">Quals</a>!</h2>
-          <h3>For a schedule of challenges and rules, see <a href="https://play.livectf.com">https://play.livectf.com/</a></h3>
-          <h3>Next live stream always available on <a href="https://youtube.com/@LiveCTF/live">YouTube</a></h3>
-          <!-- TODO: migrate to old page when not stuck on a tarmac with no laptop...
-          <h2>Join us during the DEF CON 32 CTF Finals</h2>
-          <h3><a href="https://www.youtube.com/watch?v=eU34hVPWbbw">Day 3 Stream</a></h3>
-          <h4><a href="https://www.youtube.com/watch?v=4h-CHBaKhuI">Day 2 Stream</a></h4>
-          <h5><a href="https://www.youtube.com/watch?v=4Ndw2mALAC8">Day 1 Stream</a></h5> -->
-      </div>
+      <div id="content">
+        <div id="partner">
+          <h2>In partnership with:</h2>
+          <img src="./ni-white.png" width="100%" />
+        </div>
 
-      <div id="previous">
-        <p>Past events:</p>
-        <ul>
-          <li><a href="2023.html">2023 DEF CON Finals</a></li>
-          <li><a href="2023-quals.html">2023 DEF CON Quals</a></li>
-          <li><a href="2022.html">2022 DEF CON Finals</a></li>
-        </ul>
+        <div id="links">          
+          <h2>Join us during the DEF CON 33 CTF Finals</h2>
+          <!--<h3><a href="https://youtube.com/live/1l5DOXhooFI">Day 3 Stream</a></h3>-->
+          <!--<h4><a href="https://youtube.com/live/TYn38VfmDRU">Day 2 Stream</a></h4>-->
+          <h3><a href="https://youtube.com/live/YcXgm9zy4Vk">Day 1 Stream</a></h3>
+        </div>
+
+        <div id="previous">
+          <p>Past events:</p>
+          <ul>
+            <li><a href="2024-quals.html">2024 DEF CON Quals</a></li>
+            <li><a href="2023.html">2023 DEF CON Finals</a></li>
+            <li><a href="2023-quals.html">2023 DEF CON Quals</a></li>
+            <li><a href="2022.html">2022 DEF CON Finals</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-<!--
-    <iframe id="bracket" src="https://livectf.challonge.com/livectf_defcon2024/module?theme=8219" width="100%"
-      height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
-
+    
+   
+    <iframe
+    id="bracket"
+      src="https://livectf.challonge.com/livectf_defcon2025/module"
+      width="100%"
+      height="1000"
+      frameborder="0"
+      scrolling="auto"
+      allowtransparency="true"
+    ></iframe>
     <div id="bracket-button">
       <div class="chevron"></div>
     </div>
+
 
     <script>
       const deadline = 'August 13 2023 10:00:00 UTC-0700';
@@ -214,7 +217,6 @@
       };
 
     </script>
--->
-</body>
 
+  </body>
 </html>
