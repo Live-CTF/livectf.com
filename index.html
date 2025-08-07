@@ -147,14 +147,16 @@
           <img src="./ni-white.png" width="100%" />
         </div>
 
-        <div id="links">          
+        <div id="links">
           <h2>Join us during the DEF CON 33 CTF Finals</h2>
           <!--<h3><a href="https://youtube.com/live/1l5DOXhooFI">Day 3 Stream</a></h3>-->
           <!--<h4><a href="https://youtube.com/live/TYn38VfmDRU">Day 2 Stream</a></h4>-->
-          <h3><a href="https://youtube.com/live/YcXgm9zy4Vk">Day 1 Stream</a></h3>
+          <h3>
+            <a href="https://youtube.com/live/YcXgm9zy4Vk">Day 1 Stream</a>
+          </h3>
         </div>
 
-        <div id="previous">
+        <!--<div id="previous">
           <p>Past events:</p>
           <ul>
             <li><a href="2024-quals.html">2024 DEF CON Quals</a></li>
@@ -162,13 +164,12 @@
             <li><a href="2023-quals.html">2023 DEF CON Quals</a></li>
             <li><a href="2022.html">2022 DEF CON Finals</a></li>
           </ul>
-        </div>
+        </div>-->
       </div>
     </div>
-    
-   
+
     <iframe
-    id="bracket"
+      id="bracket"
       src="https://livectf.challonge.com/livectf_defcon2025/module"
       width="100%"
       height="1000"
@@ -180,9 +181,8 @@
       <div class="chevron"></div>
     </div>
 
-
     <script>
-      const deadline = 'August 13 2023 10:00:00 UTC-0700';
+      const deadline = "August 13 2023 10:00:00 UTC-0700";
       function getTimeRemaining(endtime) {
         const total = Date.parse(endtime) - Date.parse(new Date());
         const seconds = Math.floor((total / 1000) % 60);
@@ -195,28 +195,34 @@
           days,
           hours,
           minutes,
-          seconds
+          seconds,
         };
       }
       function initializeClock(id, endtime) {
         const clock = document.getElementById(id);
         const timeinterval = setInterval(() => {
           const t = getTimeRemaining(endtime);
-          clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's ';
+          clock.innerHTML =
+            t.days +
+            "d " +
+            t.hours +
+            "h " +
+            t.minutes +
+            "m " +
+            t.seconds +
+            "s ";
           if (t.total <= 0) {
             clearInterval(timeinterval);
           }
         }, 1000);
       }
-      initializeClock('clockdiv', deadline);
+      initializeClock("clockdiv", deadline);
 
       document.getElementById("bracket-button").onclick = function () {
-        document.getElementById('bracket').scrollIntoView({
-          behavior: 'smooth'
+        document.getElementById("bracket").scrollIntoView({
+          behavior: "smooth",
         });
       };
-
     </script>
-
   </body>
 </html>
