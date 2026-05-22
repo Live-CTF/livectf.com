@@ -72,10 +72,6 @@
         font-size: clamp(14px, 1.6vw, 32px);
       }
 
-      #partner a {
-        display: contents;
-      }
-
       a.broadcast,
       a,
       a.broadcast:visited {
@@ -156,6 +152,38 @@
           box-shadow: 0 0 5px 2px #f638e6;
         }
       }
+
+      #events {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      #events a {
+        color: white;
+      }
+
+      .year h3 {
+        color: rgb(223, 60, 220);
+        font-weight: normal;
+        margin: 0 0 8px 0;
+        text-align: center;
+        border-bottom: 1px solid rgb(223, 60, 220);
+        padding-bottom: 4px;
+      }
+
+      .year ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      .year li {
+        padding: 4px 0;
+      }
     </style>
   </head>
 
@@ -166,14 +194,36 @@
       </video>
 
       <div id="space">
-        <h2>LiveCTF is at the <a href="https://bbbctf.com/">DEF CON 34 CTF Quals</a>!</h2>
-        <h3>For LiveCTF schedule, rules, and docs see <a href="https://play.livectf.com">https://play.livectf.com/</a></h3>
-        <h3>Next live stream always available on <a href="https://youtube.com/@LiveCTF/live">our YouTube</a></h3>
-        <h3>See previous events <a href="./past-events.html">here</a></h3>
-      </div>
-      <div id="partner">
-          <h2>In partnership with:</h2>
-          <a href="https://bbbirds.org"><img src="./bbb.svg" width="10%" /></a>
+        Past LiveCTF Events
+        <div id="events">
+          <div class="year">
+            <h3>2022</h3>
+            <ul>
+              <li><a href="2022.html">DEF CON Finals</a></li>
+            </ul>
+          </div>
+          <div class="year">
+            <h3>2023</h3>
+            <ul>
+              <li><a href="2023-quals.html">DEF CON Quals</a></li>
+              <li><a href="2023.html">DEF CON Finals</a></li>
+            </ul>
+          </div>
+          <div class="year">
+            <h3>2024</h3>
+            <ul>
+              <li><a href="2024-quals.html">DEF CON Quals</a></li>
+              <li><a href="https://www.youtube.com/playlist?list=PLmnqtYqOCF7-tVwsYDYSJePlMDedFSYvb">DEF CON Finals</a></li>
+            </ul>
+          </div>
+          <div class="year">
+            <h3>2025</h3>
+            <ul>
+              <li><a href="https://www.youtube.com/playlist?list=PLmnqtYqOCF7-gbw64gdxBxb9TXu_l_q9i">DEF CON Quals</a></li>
+              <li><a href="https://www.youtube.com/playlist?list=PLmnqtYqOCF7-LIoYJ61MdTSW1n82uPQxj">DEF CON Finals</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </body>
